@@ -1,0 +1,4 @@
+interface:
+  display_name: "shiyiagi-character-scene-consistency"
+  short_description: "十一AGI 角色/场景跨镜头一致性库：不变脸不变景不变道具"
+  default_prompt: "使用 $shiyiagi-character-scene-consistency 完成它所解决的任务，并按可观察标准检查结果。"
