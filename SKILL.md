@@ -49,3 +49,4 @@ metadata:
 - `references/scene-consistency.md` — 场景跨镜头一致性（复用豆包「06 场景资产」）：**空间结构 + 光影时序双层面** + 换机位身份不丢 + 光影连续渐变 + 双轨参考图
 - `references/prop-consistency.md` — 道具跨镜头一致性（全新）：根因对策 + **道具清单六要素模板** + 接触关系一致性 + 出场/消失连续性 + 成对道具 + 角色绑定
 - `references/consistency-checklist.md` — 跨镜头一致性总检表：**建库期/每镜期/成片期三道关** + 引擎适配速查（Seedance首尾帧/Kling参考图/Seedream图像/Grok英文短句）+ 标准 negative prompt 模板
+- `references/asset-hash.md` — **资产哈希登记与比对（防参考图被偷换/损坏）**：`scripts/asset_hash.py` 的 init 登记指纹 / check 垫图前比对 / file 取单文件 sha256，附含 SHA256 列的登记表模板

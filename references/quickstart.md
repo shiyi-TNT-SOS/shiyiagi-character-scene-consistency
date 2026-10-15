@@ -15,12 +15,12 @@
 | 场景 | 本库 `scene-consistency.md` + 豆包「06 场景资产」 | 定死描述 + 空景参考图 | 光源方向 + 易穿帮点 |
 | 道具 | 本库 `prop-consistency.md` | 道具清单 + 道具参考图 | 六要素 + 接触关系 |
 
-> 每产一张可用参考图，立刻回填对应档案的「已验收产物登记」表，标路径。没回填 = 不可追溯 = 下集必乱。
+> 每产一张可用参考图，立刻回填对应档案的「已验收产物登记」表，标路径与 SHA256；验收后跑 `scripts/asset_hash.py init` 登记指纹（详见 asset-hash.md）。没回填 = 不可追溯 = 下集必乱。
 
 ## 2. 每镜写法（复用期）
 
 - 套固定描述段（**原样**，不改顺序措辞）。
-- 垫锚点图 / 空景图 / 上一镜尾帧。
+- 垫锚点图 / 空景图 / 上一镜尾帧（垫前跑 `asset_hash.py check` 确认无 CHANGED/MISSING）。
 - **只改一个维度**（表情 OR 姿势 OR 机位 OR 光影），其余锁死。
 - 表情走 onset/apex/offset（→ `shiyiagi-facial-expression`）；跨镜头差 >3 档插过渡镜。
 - 套 negative prompt（→ `consistency-checklist.md` 标准模板）。
