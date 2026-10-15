@@ -6,7 +6,7 @@ license: MIT
 user-invocable: true
 tags: [consistency, shiyiagi, 十一AGI, 角色一致性, 场景一致性, 道具一致性, 跨镜头]
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   brand: "十一AGI认知圈"
   owner: "爸爸"
 ---

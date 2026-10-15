@@ -17,6 +17,7 @@
 1. **三级一致性接力法**——按可靠性从低到高：`L1 文字串（固定描述段）` < `L2 参考图（锚点图/空景图垫图）` < `L3 首尾帧接力`。连续镜走 L3，每 3 跳回锁锚点图，跨场景不接力。
 2. **一致性预算**——一场戏一次只改一个维度（表情 / 姿势 / 机位 / 光影），其余锁死。
 3. **三不变清单**——脸不变、景不变、道具不变，逐镜红线自检。
+4. **资产哈希防偷换**——给锚点图 / 空景图 / 道具图登记 sha256 指纹，垫图前自动比对，防参考图被替换、损坏或丢失（见 `scripts/asset_hash.py` + `references/asset-hash.md`）。
 
 > 口诀：**文字串保底、参考图稳压、首尾帧锁死；跨场景不接力、每三跳回锚。**
 
@@ -25,6 +26,7 @@
 - 建库三件套：角色档案 + 锚点图 / 场景资产 + 空景参考图 / 道具清单 + 道具参考图
 - 每镜提示词（固定描述段 + 垫图 + 只改一个维度）
 - 三道关质检：建库期 / 每镜期 / 成片期 A/B 比对
+- 资产哈希指纹登记（init 登记 / check 垫图前比对，防参考图被偷换）
 
 ## 目录结构
 
@@ -32,12 +34,15 @@
 shiyiagi-character-scene-consistency/
 ├── SKILL.md
 ├── agents/openai.yaml
+├── scripts/
+│   └── asset_hash.py               # 资产哈希登记/比对工具（init/check/file）
 └── references/
     ├── consistency-workflow.md     # 总流程 + 三级接力 + 一致预算 + 路由表
     ├── character-consistency.md    # 角色跨镜一致（含角度取舍表）
     ├── scene-consistency.md        # 场景跨镜一致（空间 + 光影时序）
     ├── prop-consistency.md         # 道具跨镜一致（六要素 + 接触关系）
     ├── consistency-checklist.md    # 三道关 + 引擎适配 + negative 模板
+    ├── asset-hash.md               # 资产哈希登记/比对（防参考图被偷换）
     ├── quickstart.md               # 一页开工速查卡
     └── walkthrough-demo.md         # 端到端示例（林夏 / 老办公室 / 金丝眼镜）
 ```
@@ -66,7 +71,7 @@ npx -y skills add shiyi-TNT-SOS/shiyiagi-character-scene-consistency -g --all
 
 ## 版本与授权
 
-- 版本：`1.0.0`
+- 版本：`1.1.0`
 - 授权：MIT（见 SKILL.md frontmatter）。学习与**非商业**用途可自由使用；商用请先联系作者授权。
 - 作者：柳十一（十一AGI认知圈）
 
